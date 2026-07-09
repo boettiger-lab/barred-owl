@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(kubectl rollout *)",
+      "Bash(sed -i 's/geo-agent@2dc831e52da6ca00cc7440af2774fa0747a511e0/geo-agent@v3.12.0/g' index.html && grep -n \"geo-agent@\" index.html)"
+    ],
+    "additionalDirectories": [
+      "/home/jovyan/boettiger-lab/geo-agent-template"
+    ]
+  }
+}
