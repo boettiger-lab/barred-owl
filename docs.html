@@ -82,9 +82,9 @@ footer { max-width: var(--max); margin: 0 auto; padding: 1.5rem; color: var(--in
     <p>The Barred Owl Tool is a decision-support tool that prioritizes where to concentrate
         invasive barred owl (<em>Strix varia</em>) population control to protect the northern
         spotted owl (<em>Strix occidentalis caurina</em>), complementing the USFWS Barred Owl
-        Management Strategy. All of the science, modeling (via the Zonation algorithm), and the
-        original interactive tool are the work of its authors — full credit and authority rest
-        with them.</p>
+        Management Strategy. All of the science, modeling (via the <code>prioritizr</code>
+        optimization package), and the original interactive tool are the work of its authors —
+        full credit and authority rest with them.</p>
 
     <div class="callout">
         <p style="margin-top:0"><strong>Use the official tool.</strong> For authoritative
@@ -123,14 +123,18 @@ footer { max-width: var(--max); margin: 0 auto; padding: 1.5rem; color: var(--in
         so the core question is <em>where</em> to act — a spatial prioritization problem.</p>
 
     <h3>What a "priority run" is</h3>
-    <p>The tool answers that question with <strong>Zonation</strong>, a systematic
-        conservation-planning algorithm. Given a set of input layers — where spotted owls are,
-        where barred owls are, habitat quality, fire risk, accessibility, and so on — Zonation
-        ranks every ~5&nbsp;km² hex cell by how valuable it is for barred owl management,
-        producing a <strong>priority score from 0 to 1</strong> (higher = higher priority). One
-        such ranking is a <em>priority run</em>. The score is <strong>relative</strong>: it ranks
-        cells against each other <em>within a chosen planning area</em>, rather than measuring an
-        absolute amount — so scores from different planning areas aren't directly comparable.</p>
+    <p>The tool answers that question with <strong>prioritizr</strong>, a systematic
+        conservation-planning package that casts the map as an optimization problem. Given a set
+        of input layers — where spotted owls are, where barred owls are, habitat quality, fire
+        risk, accessibility, and so on — and a fixed <strong>budget</strong> (roughly the area
+        that can realistically be managed), prioritizr finds the allocation of ~5&nbsp;km² hex
+        cells that best meets the objective: maximizing the weighted coverage of the things we
+        care about. Every hex is then given a <strong>priority score from 0 to 1</strong> —
+        <code>0</code> for cells the solution leaves out, up to <code>1</code> for the
+        highest-priority cells. One such run is a <em>priority run</em>. The score is
+        <strong>relative</strong>: it compares cells <em>within a chosen planning area</em>,
+        rather than measuring an absolute amount — so scores from different planning areas aren't
+        directly comparable.</p>
 
     <h3>What the scenarios are</h3>
     <p>There is no single "correct" prioritization — it depends on management goals and
@@ -138,9 +142,9 @@ footer { max-width: var(--max); margin: 0 auto; padding: 1.5rem; color: var(--in
         choices:</p>
     <ul>
         <li><strong>Where you're planning</strong> (management unit): the whole spotted owl range,
-            one of 10 physiographic provinces, or one of 40 general management areas. Cells are
-            re-ranked <em>within</em> each unit, so a cell's range-wide score differs from its
-            score inside a province or management area.</li>
+            one of 10 physiographic provinces, or one of 40 general management areas. The
+            optimization is re-solved and rescored <em>within</em> each unit, so a cell's
+            range-wide score differs from its score inside a province or management area.</li>
         <li><strong>What you're protecting</strong> (threat mode): <em>current</em> spotted owl
             populations, <em>projected future</em> populations, or nest/roost <em>habitat</em>.</li>
         <li><strong>Which factor you emphasize</strong> (tuning parameter): the weight on spotted
@@ -149,8 +153,8 @@ footer { max-width: var(--max); margin: 0 auto; padding: 1.5rem; color: var(--in
         <li><strong>How strongly</strong> (weight level): low, medium, or high emphasis on that
             factor.</li>
     </ul>
-    <p>Comparing scenarios is the point: cells that rank high across <em>many</em> scenarios are
-        robust priorities, while cells that rank high only under one set of assumptions are more
+    <p>Comparing scenarios is the point: cells that score high across <em>many</em> scenarios are
+        robust priorities, while cells that score high only under one set of assumptions are more
         sensitive to how the problem is framed.</p>
 </section>
 
@@ -174,7 +178,7 @@ footer { max-width: var(--max); margin: 0 auto; padding: 1.5rem; color: var(--in
     <h3>On the map — the model inputs</h3>
     <p>Each map layer is one of the <strong>ingredients</strong> the prioritization draws on,
         shown on the native ~5&nbsp;km² hex grid. These are the same in every scenario — only the
-        priority ranking changes. From coarse to fine:</p>
+        priority scores change. From coarse to fine:</p>
     <ul>
         <li><strong>NSO carrying capacity</strong> (0–20) — how many spotted owl territories a
             cell could support.</li>

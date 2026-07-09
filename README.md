@@ -7,7 +7,7 @@ via the [geo-agent-template](https://github.com/boettiger-lab/geo-agent-template
 **Live:** https://barred-owl.nrp-nautilus.io
 
 The map shows the tool's **input layers** (owl occupancy, carrying capacity, fire risk,
-refugia) styled per variable; the LLM agent queries the **Zonation priority scores** for
+refugia) styled per variable; the LLM agent queries the **prioritizr priority scores** for
 all 2,754 management scenarios (`scores.parquet`) via the DuckDB MCP server and can map
 the results. Data: [`public-barred-owl`](https://s3-west.nrp-nautilus.io/public-barred-owl/stac-collection.json)
 STAC collection (mirror of <https://barredowltool.russell.wisc.edu>).
