@@ -7,15 +7,15 @@
     "geolocate": true,
     "sidebar": { "enabled": true, "chat_title": "Chat" },
     "links": { "docs": "/docs.html", "carbon": true },
-    "view": { "center": [-122.3, 43.5], "zoom": 6 },
+    "view": { "center": [-122.3, 43.5], "zoom": 8 },
     "welcome": {
         "message": "Explore the Barred Owl Prioritization Tool for the northern spotted owl range. The map layers show the model INPUTS (owl occupancy, carrying capacity, fire risk, refugia). The Zonation priority SCORES for all 2,754 management scenarios live in a queryable table — just ask. Try:",
         "examples": [
             "Where is northern spotted owl carrying capacity highest?",
             "Show me barred owl occupancy across the range",
             "Show the range-wide current-threat scenario at high NSO weight",
-            "Compare priority scores between the current-threat and future-threat scenarios",
-            "Which physiographic province has the most high-priority area?"
+            "Show large-fire suitability across the range",
+            "Zoom to the Oregon Coast Range"
         ]
     },
     "collections": [
