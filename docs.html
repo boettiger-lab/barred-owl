@@ -110,6 +110,51 @@ footer { max-width: var(--max); margin: 0 auto; padding: 1.5rem; color: var(--in
 </section>
 
 <section>
+    <h2>Understanding the tool</h2>
+
+    <h3>The conservation problem</h3>
+    <p>The <strong>northern spotted owl (NSO)</strong>, <em>Strix occidentalis caurina</em>, is
+        a threatened old-forest raptor of the Pacific Northwest. The <strong>barred owl</strong>,
+        <em>Strix varia</em> — a larger, more aggressive relative from eastern North America — has
+        expanded into the spotted owl's range and now outcompetes it for territory and food. This
+        invasion is one of the leading drivers of the spotted owl's continued decline. The USFWS
+        Barred Owl Management Strategy calls for <strong>targeted removal of barred owls</strong>
+        where it will most benefit spotted owls. But the range is vast and resources are limited,
+        so the core question is <em>where</em> to act — a spatial prioritization problem.</p>
+
+    <h3>What a "priority run" is</h3>
+    <p>The tool answers that question with <strong>Zonation</strong>, a systematic
+        conservation-planning algorithm. Given a set of input layers — where spotted owls are,
+        where barred owls are, habitat quality, fire risk, accessibility, and so on — Zonation
+        ranks every ~5&nbsp;km² hex cell by how valuable it is for barred owl management,
+        producing a <strong>priority score from 0 to 1</strong> (higher = higher priority). One
+        such ranking is a <em>priority run</em>. The score is <strong>relative</strong>: it ranks
+        cells against each other <em>within a chosen planning area</em>, rather than measuring an
+        absolute amount — so scores from different planning areas aren't directly comparable.</p>
+
+    <h3>What the scenarios are</h3>
+    <p>There is no single "correct" prioritization — it depends on management goals and
+        assumptions. The tool therefore produces <strong>2,754 scenarios</strong>, combining four
+        choices:</p>
+    <ul>
+        <li><strong>Where you're planning</strong> (management unit): the whole spotted owl range,
+            one of 10 physiographic provinces, or one of 40 general management areas. Cells are
+            re-ranked <em>within</em> each unit, so a cell's range-wide score differs from its
+            score inside a province or management area.</li>
+        <li><strong>What you're protecting</strong> (threat mode): <em>current</em> spotted owl
+            populations, <em>projected future</em> populations, or nest/roost <em>habitat</em>.</li>
+        <li><strong>Which factor you emphasize</strong> (tuning parameter): the weight on spotted
+            owls, or the penalty/incentive for fire risk, fire refugia, federal reserve lands,
+            distance to roads, or distance to trails.</li>
+        <li><strong>How strongly</strong> (weight level): low, medium, or high emphasis on that
+            factor.</li>
+    </ul>
+    <p>Comparing scenarios is the point: cells that rank high across <em>many</em> scenarios are
+        robust priorities, while cells that rank high only under one set of assumptions are more
+        sensitive to how the problem is framed.</p>
+</section>
+
+<section>
     <h2>How it works</h2>
     <p>This app is powered by <a href="https://boettiger-lab.github.io/geo-agent/">GLEN</a>,
         DSE's open-source framework for AI-assisted geospatial exploration. Open datasets stream
@@ -124,18 +169,40 @@ footer { max-width: var(--max); margin: 0 auto; padding: 1.5rem; color: var(--in
 </section>
 
 <section>
-    <h2>What you can do</h2>
-    <p>The map shows the tool's <strong>input layers</strong> — northern spotted owl carrying
-        capacity, pair occupancy and nest/roost habitat; barred owl occupancy; large-fire
-        suitability; fire refugia; and federal reserve allocation — each on the native ~5 km²
-        hex grid. The <strong>assistant</strong> can both drive the map and answer analytical
-        questions over the Zonation <strong>priority scores</strong> for all 2,754 management
-        scenarios (management unit × threat mode × tuning parameter × weight level). Try:</p>
+    <h2>What you can explore here</h2>
+
+    <h3>On the map — the model inputs</h3>
+    <p>Each map layer is one of the <strong>ingredients</strong> the prioritization draws on,
+        shown on the native ~5&nbsp;km² hex grid. These are the same in every scenario — only the
+        priority ranking changes. From coarse to fine:</p>
+    <ul>
+        <li><strong>NSO carrying capacity</strong> (0–20) — how many spotted owl territories a
+            cell could support.</li>
+        <li><strong>NSO pair occupancy</strong> and <strong>nest/roost habitat</strong> (0–1) —
+            where spotted owls are, and where suitable breeding habitat is.</li>
+        <li><strong>Barred owl occupancy</strong> (0–1) — where the invading barred owl is
+            established.</li>
+        <li><strong>Large-fire suitability</strong> vs. <strong>fire refugia</strong> (0–100) —
+            wildfire risk against climate-buffered refuges.</li>
+        <li><strong>Federal reserve allocation</strong> — federal conservation land, which can
+            raise or lower priority depending on the scenario.</li>
+    </ul>
+
+    <h3>Through the assistant — the priority scores</h3>
+    <p>The 2,754 priority runs are far too many to list as map toggles, so they live in a
+        queryable table that the assistant reads on demand. Ask it to <strong>map or rank any
+        scenario</strong>, or to <strong>compare across scenarios</strong>. It can also drive the
+        map and answer quantitative questions about the inputs. Try:</p>
     <ul>
         <li>"Where is northern spotted owl carrying capacity highest?"</li>
-        <li>"For the range-wide current-threat scenario at high NSO weight, which 20 hexes rank highest?"</li>
+        <li>"Show the range-wide current-threat scenario at high NSO weight."</li>
         <li>"Compare priority scores between the current-threat and future-threat scenarios."</li>
+        <li>"Which physiographic province has the most high-priority area?"</li>
     </ul>
+    <p style="color:var(--ink-soft)"><strong>Reading the scores:</strong> higher = higher
+        management priority, and scores are relative <em>within</em> each management unit — so
+        don't compare a province's raw scores against the range-wide run as if they were on one
+        scale.</p>
 </section>
 
 <section>
