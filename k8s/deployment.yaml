@@ -21,21 +21,30 @@ spec:
         app: barred-owl
     spec:
       initContainers:
-      - name: git-clone
-        image: alpine/git:2.52.0
+      # Private-repo pattern: the GitHub repo (boettiger-lab/barred-owl) is
+      # private, so the pod cannot git-clone at startup. App content is served
+      # from the barred-owl-content ConfigMap instead. To update content:
+      #   1. edit index.html / layers-input.json / system-prompt.md
+      #   2. kubectl create configmap barred-owl-content -n biodiversity \
+      #        --from-file=index.html --from-file=layers-input.json \
+      #        --from-file=system-prompt.md --dry-run=client -o yaml \
+      #        | kubectl apply -f -
+      #   3. kubectl rollout restart -f k8s/deployment.yaml
+      # (If the repo is later made public, revert to a git-clone init container.)
+      - name: load-content
+        image: busybox:1.36
         command:
         - sh
         - -c
         - |
-          # Clone the barred-owl app repo (init container runs at pod startup;
-          # whatever is on main is what the app serves).
-          git clone --depth 1 https://github.com/boettiger-lab/barred-owl.git /tmp/repo
-          cp /tmp/repo/index.html /usr/share/nginx/html/
-          cp /tmp/repo/layers-input.json /usr/share/nginx/html/
-          cp /tmp/repo/system-prompt.md /usr/share/nginx/html/
+          cp /content-src/index.html /content-src/layers-input.json \
+             /content-src/system-prompt.md /usr/share/nginx/html/
         volumeMounts:
         - name: website-content
           mountPath: /usr/share/nginx/html
+        - name: app-content
+          mountPath: /content-src
+          readOnly: true
       containers:
       - name: nginx
         image: nginx:alpine
@@ -100,6 +109,9 @@ spec:
       volumes:
       - name: website-content
         emptyDir: {}
+      - name: app-content
+        configMap:
+          name: barred-owl-content
       - name: config-template
         configMap:
           name: barred-owl-config
