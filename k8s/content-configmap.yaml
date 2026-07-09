@@ -250,8 +250,8 @@ data:
                 "Where is northern spotted owl carrying capacity highest?",
                 "Show me barred owl occupancy across the range",
                 "Show the range-wide current-threat scenario at high NSO weight",
-                "Show large-fire suitability across the range",
-                "Zoom to the Oregon Coast Range"
+                "Show the range-wide future-threat priority scenario",
+                "Show the habitat-focused priority scenario"
             ]
         },
         "collections": [
