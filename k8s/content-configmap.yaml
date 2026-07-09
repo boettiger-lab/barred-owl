@@ -197,7 +197,7 @@ data:
             "examples": [
                 "Where is northern spotted owl carrying capacity highest?",
                 "Show me barred owl occupancy across the range",
-                "For the range-wide current-threat scenario at high NSO weight, which 20 hexes have the highest priority score?",
+                "Show the range-wide current-threat scenario at high NSO weight",
                 "Compare priority scores between the current-threat and future-threat scenarios",
                 "Which physiographic province has the most high-priority area?"
             ]
