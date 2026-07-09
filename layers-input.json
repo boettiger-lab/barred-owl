@@ -5,7 +5,8 @@
     "auto_approve": true,
     "geocoder": true,
     "geolocate": true,
-    "sidebar": true,
+    "sidebar": { "enabled": true, "chat_title": "Chat" },
+    "links": { "docs": "/docs.html", "carbon": true },
     "view": { "center": [-122.3, 43.5], "zoom": 6 },
     "welcome": {
         "message": "Explore the Barred Owl Prioritization Tool for the northern spotted owl range. The map layers show the model INPUTS (owl occupancy, carrying capacity, fire risk, refugia). The Zonation priority SCORES for all 2,754 management scenarios live in a queryable table — just ask. Try:",

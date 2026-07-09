@@ -38,7 +38,7 @@ spec:
         - -c
         - |
           cp /content-src/index.html /content-src/layers-input.json \
-             /content-src/system-prompt.md /usr/share/nginx/html/
+             /content-src/system-prompt.md /content-src/docs.html /usr/share/nginx/html/
         volumeMounts:
         - name: website-content
           mountPath: /usr/share/nginx/html

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Barred Owl Prioritization (GLEN proof-of-concept)</title>
+<style>
+:root {
+    --ink: #241c14;
+    --ink-soft: #5b4f43;
+    --paper: #faf7f2;
+    --rule: #e7dfd3;
+    --accent: #8a5a2b;
+    --accent-dark: #5e3c18;
+    --accent-soft: #f0e7da;
+    --link: #8a5a2b;
+    --max: 880px;
+}
+* { box-sizing: border-box; }
+html, body {
+    margin: 0; padding: 0;
+    background: var(--paper); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 16px; line-height: 1.6;
+}
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+header.hero {
+    background: linear-gradient(135deg, #3a2712 0%, var(--accent) 100%);
+    color: #fff; padding: 3.5rem 1.5rem 2.5rem; border-bottom: 1px solid var(--rule);
+}
+.hero-inner { max-width: var(--max); margin: 0 auto; }
+.hero h1 { font-size: 2.1rem; margin: 0 0 0.4rem 0; font-weight: 600; letter-spacing: -0.02em; }
+.hero .tag { font-size: 1.05rem; opacity: 0.92; margin: 0 0 1.4rem 0; max-width: 62ch; }
+.hero .cta {
+    display: inline-block; background: rgba(255,255,255,0.15); color: #fff;
+    padding: 0.55rem 1.1rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.35);
+    font-weight: 500; transition: background 0.15s;
+}
+.hero .cta:hover { background: rgba(255,255,255,0.28); text-decoration: none; }
+.hero .badge {
+    display: inline-block; margin-left: 0.6rem; padding: 0.18rem 0.55rem; border-radius: 999px;
+    background: rgba(255,255,255,0.18); font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 0.02em; vertical-align: middle;
+}
+main { max-width: var(--max); margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+section { margin-bottom: 2.6rem; }
+h2 {
+    font-size: 1.45rem; color: var(--accent-dark); border-bottom: 2px solid var(--accent-soft);
+    padding-bottom: 0.4rem; margin: 0 0 1rem 0; font-weight: 600;
+}
+p { margin: 0.5rem 0 0.9rem; }
+p.lede { font-size: 1.05rem; color: var(--ink-soft); }
+.callout {
+    background: #fff; border: 1px solid var(--rule); border-left: 4px solid var(--accent);
+    border-radius: 8px; padding: 1rem 1.25rem; margin: 1.1rem 0;
+}
+ul { margin: 0.4rem 0 0.9rem; padding-left: 1.3rem; }
+li { margin: 0.3rem 0; }
+footer { max-width: var(--max); margin: 0 auto; padding: 1.5rem; color: var(--ink-soft); font-size: 0.9rem; border-top: 1px solid var(--rule); }
+</style>
+</head>
+<body>
+<header class="hero">
+    <div class="hero-inner">
+        <h1>Barred Owl Prioritization Tool <span class="badge">proof of concept</span></h1>
+        <p class="tag">An independent demonstration of exploring the Barred Owl Tool's data
+            through GLEN — an AI-assisted, cloud-native map interface. This is <strong>not</strong>
+            the official tool.</p>
+        <a class="cta" href="/">← Open the map</a>
+    </div>
+</header>
+<main>
+
+<section>
+    <h2>About this project</h2>
+    <p class="lede">This is a <strong>proof-of-concept</strong> built by the
+        <a href="https://dse.berkeley.edu">Eric and Wendy Schmidt Center for Data Science &amp;
+        Environment (DSE)</a> at UC Berkeley to explore the data behind the
+        <strong>Barred Owl Tool</strong> inside the GLEN architecture. It is not affiliated with,
+        endorsed by, or maintained by the tool's authors.</p>
+    <p>The Barred Owl Tool is a decision-support tool that prioritizes where to concentrate
+        invasive barred owl (<em>Strix varia</em>) population control to protect the northern
+        spotted owl (<em>Strix occidentalis caurina</em>), complementing the USFWS Barred Owl
+        Management Strategy. All of the science, modeling (via the Zonation algorithm), and the
+        original interactive tool are the work of its authors — full credit and authority rest
+        with them.</p>
+
+    <div class="callout">
+        <p style="margin-top:0"><strong>Use the official tool.</strong> For authoritative
+        results, methods, and guidance, please visit the original application and its
+        documentation:</p>
+        <ul>
+            <li><a href="https://barredowltool.russell.wisc.edu">barredowltool.russell.wisc.edu</a>
+                — the official Barred Owl Tool (Background, Methods, How-to guide)</li>
+            <li><a href="https://www.fws.gov/project/barred-owl-management">USFWS Barred Owl
+                Management</a> — the management strategy this tool supports</li>
+        </ul>
+        <p style="margin-bottom:0">Coproduced by the University of Wisconsin–Madison
+        <a href="https://peery.russell.wisc.edu">Peery Wildlife Ecology + Conservation Lab</a>
+        and the US Fish &amp; Wildlife Service, with support from
+        <a href="https://appliedsciences.nasa.gov/what-we-do/ecological-conservation">NASA's
+        Ecological Conservation</a> program.</p>
+    </div>
+
+    <p>This demo mirrors the tool's outputs into cloud-native formats and pairs them with an
+        AI assistant. Because it re-processes and re-hosts the data, values or styling here may
+        differ from the official tool — treat this as an exploratory interface, not a source of
+        record.</p>
+</section>
+
+<section>
+    <h2>How it works</h2>
+    <p>This app is powered by <a href="https://boettiger-lab.github.io/geo-agent/">GLEN</a>,
+        DSE's open-source framework for AI-assisted geospatial exploration. Open datasets stream
+        straight to your browser from cloud-native formats — no tile server in between — and an
+        AI assistant answers questions by writing live queries against the same data. Technical
+        details are in the <a href="https://boettiger-lab.github.io/geo-agent/docs/">GLEN
+        documentation</a>.</p>
+    <p>🌱 <strong>Low-carbon, open models.</strong> GLEN uses more environmentally-friendly AI
+        models — faster than most humans, if not the very largest commercial models. See the
+        <a href="https://carbon-dashboard.nrp-nautilus.io">carbon dashboard 🌱</a> for the
+        CO₂/energy use of this deployment.</p>
+</section>
+
+<section>
+    <h2>What you can do</h2>
+    <p>The map shows the tool's <strong>input layers</strong> — northern spotted owl carrying
+        capacity, pair occupancy and nest/roost habitat; barred owl occupancy; large-fire
+        suitability; fire refugia; and federal reserve allocation — each on the native ~5 km²
+        hex grid. The <strong>assistant</strong> can both drive the map and answer analytical
+        questions over the Zonation <strong>priority scores</strong> for all 2,754 management
+        scenarios (management unit × threat mode × tuning parameter × weight level). Try:</p>
+    <ul>
+        <li>"Where is northern spotted owl carrying capacity highest?"</li>
+        <li>"For the range-wide current-threat scenario at high NSO weight, which 20 hexes rank highest?"</li>
+        <li>"Compare priority scores between the current-threat and future-threat scenarios."</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Data &amp; sources</h2>
+    <p>Data mirror:
+        <a href="https://radiantearth.github.io/stac-browser/#/external/s3-west.nrp-nautilus.io/public-barred-owl/stac-collection.json">STAC
+        collection</a> (<code>public-barred-owl</code>) — processed by the
+        <a href="https://github.com/boettiger-lab">Boettiger Lab</a> from the
+        <a href="https://barredowltool.russell.wisc.edu">Barred Owl Tool</a>.
+        Underlying inputs include NSO pair occupancy (Lesmeister et al.), spotted-owl nest/roost
+        habitat (Davis et al. 2022), barred-owl landscape use (Jenkins et al. 2025,
+        <em>J. Biogeography</em>), USGS GAP species, large-fire suitability (Davis et al. 2017),
+        OSU Eco-Vis fire refugia, and NWFP federal reserve allocations. See the official tool's
+        Methods page for full provenance.</p>
+</section>
+
+</main>
+<footer>
+    A GLEN proof-of-concept by DSE / Boettiger Lab · Data &amp; original tool © their respective
+    authors · <a href="/">Open the map →</a>
+</footer>
+</body>
+</html>
