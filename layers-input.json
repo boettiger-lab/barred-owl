@@ -11,7 +11,7 @@
     "welcome": {
         "message": "Explore the Barred Owl Prioritization Tool for the northern spotted owl range. The map layers show the model INPUTS (owl occupancy, carrying capacity, fire risk, refugia). The Zonation priority SCORES for all 2,754 management scenarios live in a queryable table — just ask. Try:",
         "examples": [
-            "What kinds of scenarios are available? (just explain, don't query)",
+            "Summarize the kind of scenarios you can show",
             "Where is northern spotted owl carrying capacity highest?",
             "Show me barred owl occupancy across the range",
             "Show the range-wide current-threat scenario at high NSO weight",
