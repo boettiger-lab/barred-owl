@@ -1,7 +1,7 @@
 # barred-owl
 
 AI-powered interactive map app for the **Barred Owl Prioritization Tool** (Northern
-Spotted Owl range), built on [geo-agent](https://github.com/boettiger-lab/geo-agent)
+Spotted Owl range), built on [geo-agent](https://github.com/SchmidtDSE/glen)
 via the [geo-agent-template](https://github.com/boettiger-lab/geo-agent-template).
 
 **Live:** https://barred-owl.nrp-nautilus.io
@@ -21,7 +21,7 @@ STAC collection (mirror of <https://barredowltool.russell.wisc.edu>).
 - `index.html` — HTML shell (core JS/CSS from CDN).
 - `k8s/` — Kubernetes deployment (`biodiversity` namespace).
 
-See [AGENTS.md](AGENTS.md) and the [geo-agent docs](https://boettiger-lab.github.io/geo-agent/)
+See [AGENTS.md](AGENTS.md) and the [geo-agent docs](https://schmidtdse.github.io/glen/)
 for the full configuration and deployment reference.
 
 ## Deploy
