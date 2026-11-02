@@ -2,7 +2,7 @@
 
 AI-powered interactive map app for the **Barred Owl Prioritization Tool** (Northern
 Spotted Owl range), built on [geo-agent](https://github.com/SchmidtDSE/glen)
-via the [geo-agent-template](https://github.com/boettiger-lab/geo-agent-template).
+via the [glen-template](https://github.com/SchmidtDSE/glen-template).
 
 **Live:** https://barred-owl.nrp-nautilus.io
 
