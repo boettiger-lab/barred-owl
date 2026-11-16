@@ -1,87 +1,145 @@
 {
-    "catalog": "https://s3-west.nrp-nautilus.io/public-data/stac/catalog.json",
-    "titiler_url": "https://titiler.nrp-nautilus.io",
-    "mcp_url": "https://duckdb-mcp.nrp-nautilus.io/mcp",
-    "auto_approve": true,
-    "geocoder": true,
-    "geolocate": true,
-    "sidebar": { "enabled": true, "chat_title": "Chat" },
-    "links": { "docs": "/docs.html", "github": "https://github.com/boettiger-lab/barred-owl", "carbon": true },
-    "view": { "center": [-122.3, 43.5], "zoom": 8 },
-    "welcome": {
-        "message": "Explore the Barred Owl Prioritization Tool for the northern spotted owl range. The map layers show the model INPUTS (owl occupancy, carrying capacity, fire risk, refugia). The prioritizr priority SCORES for all 2,754 management scenarios live in a queryable table — just ask. Try:",
-        "examples": [
-            "What kinds of scenarios are available? (just explain, don't query)",
-            "Where is northern spotted owl carrying capacity highest?",
-            "Show me barred owl occupancy across the range",
-            "Show the range-wide current-threat scenario at high NSO weight",
-            "Show the range-wide future-threat priority scenario",
-            "Show the habitat-focused priority scenario"
-        ]
-    },
-    "collections": [
-        {
-            "collection_id": "barred-owl",
-            "collection_url": "https://s3-west.nrp-nautilus.io/public-barred-owl/stac-collection.json",
-            "group": "Barred Owl Tool — inputs",
-            "assets": [
-                {
-                    "id": "inputs-pmtiles",
-                    "alias": "nso-ccap",
-                    "display_name": "NSO carrying capacity (0–20)",
-                    "visible": true,
-                    "style": "inputs-nso-ccap",
-                    "tooltip_fields": ["HEXID", "NSO_ccap", "NSO_occ", "BO_occ", "fire_suit", "fire_refu"]
-                },
-                {
-                    "id": "inputs-pmtiles",
-                    "alias": "bo-occ",
-                    "display_name": "Barred owl occupancy (0–1)",
-                    "visible": false,
-                    "style": "inputs-bo-occ",
-                    "tooltip_fields": ["HEXID", "BO_occ", "NSO_occ", "NSO_ccap"]
-                },
-                {
-                    "id": "inputs-pmtiles",
-                    "alias": "nso-occ",
-                    "display_name": "NSO pair occupancy (0–1)",
-                    "visible": false,
-                    "style": "inputs-nso-occ",
-                    "tooltip_fields": ["HEXID", "NSO_occ", "NSO_hab", "NSO_ccap"]
-                },
-                {
-                    "id": "inputs-pmtiles",
-                    "alias": "nso-hab",
-                    "display_name": "NSO nest/roost habitat (0–1)",
-                    "visible": false,
-                    "style": "inputs-nso-hab",
-                    "tooltip_fields": ["HEXID", "NSO_hab", "NSO_occ", "NSO_ccap"]
-                },
-                {
-                    "id": "inputs-pmtiles",
-                    "alias": "fire-suit",
-                    "display_name": "Large-fire suitability (0–100)",
-                    "visible": false,
-                    "style": "inputs-fire-suit",
-                    "tooltip_fields": ["HEXID", "fire_suit", "fire_refu", "fed_res"]
-                },
-                {
-                    "id": "inputs-pmtiles",
-                    "alias": "fire-refu",
-                    "display_name": "Fire refugia (0–100)",
-                    "visible": false,
-                    "style": "inputs-fire-refu",
-                    "tooltip_fields": ["HEXID", "fire_refu", "fire_suit", "fed_res"]
-                },
-                {
-                    "id": "inputs-pmtiles",
-                    "alias": "fed-res",
-                    "display_name": "Federal reserve allocation (0–1)",
-                    "visible": false,
-                    "style": "inputs-fed-res",
-                    "tooltip_fields": ["HEXID", "fed_res", "NSO_ccap"]
-                }
-            ]
-        }
+  "catalog": "https://s3-west.nrp-nautilus.io/public-data/stac/catalog.json",
+  "titiler_url": "https://titiler.nrp-nautilus.io",
+  "auto_approve": true,
+  "geocoder": true,
+  "geolocate": true,
+  "sidebar": {
+    "enabled": true,
+    "chat_title": "Chat"
+  },
+  "links": {
+    "docs": "/docs.html",
+    "github": "https://github.com/boettiger-lab/barred-owl",
+    "carbon": true
+  },
+  "view": {
+    "center": [
+      -122.3,
+      43.5
+    ],
+    "zoom": 8
+  },
+  "welcome": {
+    "message": "Explore the Barred Owl Prioritization Tool for the northern spotted owl range. The map layers show the model INPUTS (owl occupancy, carrying capacity, fire risk, refugia). The prioritizr priority SCORES for all 2,754 management scenarios live in a queryable table — just ask. Try:",
+    "examples": [
+      "What kinds of scenarios are available? (just explain, don't query)",
+      "Where is northern spotted owl carrying capacity highest?",
+      "Show me barred owl occupancy across the range",
+      "Show the range-wide current-threat scenario at high NSO weight",
+      "Show the range-wide future-threat priority scenario",
+      "Show the habitat-focused priority scenario"
     ]
+  },
+  "collections": [
+    {
+      "collection_id": "barred-owl",
+      "collection_url": "https://s3-west.nrp-nautilus.io/public-barred-owl/stac-collection.json",
+      "group": "Barred Owl Tool — inputs",
+      "assets": [
+        {
+          "id": "inputs-pmtiles",
+          "alias": "nso-ccap",
+          "display_name": "NSO carrying capacity (0–20)",
+          "visible": true,
+          "style": "inputs-nso-ccap",
+          "tooltip_fields": [
+            "HEXID",
+            "NSO_ccap",
+            "NSO_occ",
+            "BO_occ",
+            "fire_suit",
+            "fire_refu"
+          ]
+        },
+        {
+          "id": "inputs-pmtiles",
+          "alias": "bo-occ",
+          "display_name": "Barred owl occupancy (0–1)",
+          "visible": false,
+          "style": "inputs-bo-occ",
+          "tooltip_fields": [
+            "HEXID",
+            "BO_occ",
+            "NSO_occ",
+            "NSO_ccap"
+          ]
+        },
+        {
+          "id": "inputs-pmtiles",
+          "alias": "nso-occ",
+          "display_name": "NSO pair occupancy (0–1)",
+          "visible": false,
+          "style": "inputs-nso-occ",
+          "tooltip_fields": [
+            "HEXID",
+            "NSO_occ",
+            "NSO_hab",
+            "NSO_ccap"
+          ]
+        },
+        {
+          "id": "inputs-pmtiles",
+          "alias": "nso-hab",
+          "display_name": "NSO nest/roost habitat (0–1)",
+          "visible": false,
+          "style": "inputs-nso-hab",
+          "tooltip_fields": [
+            "HEXID",
+            "NSO_hab",
+            "NSO_occ",
+            "NSO_ccap"
+          ]
+        },
+        {
+          "id": "inputs-pmtiles",
+          "alias": "fire-suit",
+          "display_name": "Large-fire suitability (0–100)",
+          "visible": false,
+          "style": "inputs-fire-suit",
+          "tooltip_fields": [
+            "HEXID",
+            "fire_suit",
+            "fire_refu",
+            "fed_res"
+          ]
+        },
+        {
+          "id": "inputs-pmtiles",
+          "alias": "fire-refu",
+          "display_name": "Fire refugia (0–100)",
+          "visible": false,
+          "style": "inputs-fire-refu",
+          "tooltip_fields": [
+            "HEXID",
+            "fire_refu",
+            "fire_suit",
+            "fed_res"
+          ]
+        },
+        {
+          "id": "inputs-pmtiles",
+          "alias": "fed-res",
+          "display_name": "Federal reserve allocation (0–1)",
+          "visible": false,
+          "style": "inputs-fed-res",
+          "tooltip_fields": [
+            "HEXID",
+            "fed_res",
+            "NSO_ccap"
+          ]
+        }
+      ]
+    }
+  ],
+  "plugins": [
+    {
+      "url": "https://cdn.jsdelivr.net/gh/SchmidtDSE/glen@v4.0.0/core/plugins/mcp.js",
+      "options": {
+        "url": "https://duckdb-mcp.nrp-nautilus.io/mcp",
+        "prompt": "geospatial-analyst"
+      }
+    },
+    "https://cdn.jsdelivr.net/gh/SchmidtDSE/glen@v4.0.0/core/plugins/hex.js"
+  ]
 }
